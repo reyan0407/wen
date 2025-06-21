@@ -486,13 +486,35 @@ p {
     -webkit-backdrop-filter: blur(10px);
 }
 
-/* AdSense optimization */
-.adsbygoogle {
+/* AdSense optimization - Fixed container sizing */
+.adsense-container {
     display: block !important;
-    min-height: 100px;
+    min-height: 250px !important;
+    min-width: 300px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;
     border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.adsbygoogle {
+    display: block !important;
+    width: 100% !important;
+    min-width: 300px !important;
+    min-height: 250px !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Ensure AdSense container is never hidden */
+.adsense-container,
+.adsense-container * {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
 }
 
 /* SEO-friendly image containers */
@@ -544,6 +566,17 @@ p {
 @media (max-width: 768px) {
     .perf-monitor {
         display: none !important;
+    }
+    
+    /* Mobile AdSense adjustments */
+    .adsense-container {
+        min-width: 280px !important;
+        min-height: 200px !important;
+    }
+    
+    .adsbygoogle {
+        min-width: 280px !important;
+        min-height: 200px !important;
     }
 }
 
