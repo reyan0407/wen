@@ -534,3 +534,13 @@ p {
 .optimize-fid {
     pointer-events: auto;
 }
+
+/* AdSense optimization */
+.adsbygoogle {
+    display: block !important;
+    min-height: 100px;
+    min-width: 100px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
