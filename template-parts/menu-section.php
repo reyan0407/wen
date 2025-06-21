@@ -38,30 +38,32 @@
                 
                 foreach($popular_items as $item): ?>
                     <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden ring-2 ring-yellow-400 menu-item-card">
-                        <div class="relative">
-                            <img src="<?php echo esc_url($item['image']); ?>" 
-                                 alt="<?php echo esc_attr($item['name']); ?>" 
-                                 class="w-full h-48 object-cover" loading="lazy">
-                            <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
-                                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                </svg>
-                                Popular
+                        <a href="#" class="block no-underline">
+                            <div class="relative">
+                                <img src="<?php echo esc_url($item['image']); ?>" 
+                                     alt="<?php echo esc_attr($item['name']); ?>" 
+                                     class="w-full h-48 object-cover" loading="lazy">
+                                <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Popular
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-bold text-lg text-gray-900 mb-2"><?php echo esc_html($item['name']); ?></h4>
-                            <p class="text-gray-600 text-sm mb-3 line-clamp-3"><?php echo esc_html($item['description']); ?></p>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-wendy-red font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
-                                <?php if(isset($item['calories'])): ?>
-                                    <span class="text-gray-500 text-sm"><?php echo esc_html($item['calories']); ?></span>
-                                <?php endif; ?>
+                            <div class="p-4">
+                                <h4 class="font-bold text-lg text-gray-900 mb-2"><?php echo esc_html($item['name']); ?></h4>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-3"><?php echo esc_html($item['description']); ?></p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
+                                    <?php if(isset($item['calories'])): ?>
+                                        <span class="text-gray-500 text-sm"><?php echo esc_html($item['calories']); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
-                            <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                                View Details
-                            </button>
-                        </div>
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -89,32 +91,34 @@
                      data-category="<?php echo esc_attr($item['category']); ?>"
                      data-name="<?php echo esc_attr(strtolower($item['name'])); ?>"
                      data-description="<?php echo esc_attr(strtolower($item['description'])); ?>">
-                    <div class="relative">
-                        <img src="<?php echo esc_url($item['image']); ?>" 
-                             alt="<?php echo esc_attr($item['name']); ?>" 
-                             class="w-full h-48 object-cover" loading="lazy">
-                        <?php if(isset($item['popular']) && $item['popular']): ?>
-                            <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
-                                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                </svg>
-                                Popular
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="p-4">
-                        <h4 class="font-bold text-lg text-gray-900 mb-2"><?php echo esc_html($item['name']); ?></h4>
-                        <p class="text-gray-600 text-sm mb-3 line-clamp-3"><?php echo esc_html($item['description']); ?></p>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-wendy-red font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
-                            <?php if(isset($item['calories'])): ?>
-                                <span class="text-gray-500 text-sm"><?php echo esc_html($item['calories']); ?></span>
+                    <a href="#" class="block no-underline">
+                        <div class="relative">
+                            <img src="<?php echo esc_url($item['image']); ?>" 
+                                 alt="<?php echo esc_attr($item['name']); ?>" 
+                                 class="w-full h-48 object-cover" loading="lazy">
+                            <?php if(isset($item['popular']) && $item['popular']): ?>
+                                <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Popular
+                                </div>
                             <?php endif; ?>
                         </div>
-                        <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
-                            View Details
-                        </button>
-                    </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2"><?php echo esc_html($item['name']); ?></h4>
+                            <p class="text-gray-600 text-sm mb-3 line-clamp-3"><?php echo esc_html($item['description']); ?></p>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-wendy-red font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
+                                <?php if(isset($item['calories'])): ?>
+                                    <span class="text-gray-500 text-sm"><?php echo esc_html($item['calories']); ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                View Details
+                            </button>
+                        </div>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>
