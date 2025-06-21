@@ -466,20 +466,6 @@ p {
     hyphens: auto;
 }
 
-/* Optimize for Core Web Vitals */
-.optimize-lcp {
-    content-visibility: auto;
-    contain-intrinsic-size: 200px;
-}
-
-.optimize-cls {
-    min-height: 200px;
-}
-
-.optimize-fid {
-    pointer-events: auto;
-}
-
 /* Cookie banner styles */
 #cookie-banner {
     backdrop-filter: blur(10px);

@@ -17,7 +17,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
                 <input type="text" id="menu-search" placeholder="Search menu items..." 
-                       class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors duration-200">
+                       class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wendy-red focus:border-wendy-red transition-colors duration-200">
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                             <img src="<?php echo esc_url($item['image']); ?>" 
                                  alt="<?php echo esc_attr($item['name']); ?>" 
                                  class="w-full h-48 object-cover" loading="lazy">
-                            <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center">
+                            <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                                 </svg>
@@ -53,12 +53,12 @@
                             <h4 class="font-bold text-lg text-gray-900 mb-2"><?php echo esc_html($item['name']); ?></h4>
                             <p class="text-gray-600 text-sm mb-3 line-clamp-3"><?php echo esc_html($item['description']); ?></p>
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-red-600 font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
+                                <span class="text-wendy-red font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
                                 <?php if(isset($item['calories'])): ?>
                                     <span class="text-gray-500 text-sm"><?php echo esc_html($item['calories']); ?></span>
                                 <?php endif; ?>
                             </div>
-                            <button class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                            <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
                                 View Details
                             </button>
                         </div>
@@ -74,7 +74,7 @@
                 $categories = get_menu_categories();
                 foreach($categories as $category): ?>
                     <button onclick="filterByCategory('<?php echo esc_js($category['id']); ?>')" 
-                            class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-red-600 shadow-md hover:shadow-lg"
+                            class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg"
                             data-category="<?php echo esc_attr($category['id']); ?>">
                         <?php echo esc_html($category['name']); ?>
                     </button>
@@ -83,7 +83,7 @@
         </div>
 
         <!-- Menu Items -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-items">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-items-grid">
             <?php foreach($menu_items as $item): ?>
                 <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item-card menu-item" 
                      data-category="<?php echo esc_attr($item['category']); ?>"
@@ -94,7 +94,7 @@
                              alt="<?php echo esc_attr($item['name']); ?>" 
                              class="w-full h-48 object-cover" loading="lazy">
                         <?php if(isset($item['popular']) && $item['popular']): ?>
-                            <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center">
+                            <div class="absolute top-3 right-3 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                                 </svg>
@@ -106,12 +106,12 @@
                         <h4 class="font-bold text-lg text-gray-900 mb-2"><?php echo esc_html($item['name']); ?></h4>
                         <p class="text-gray-600 text-sm mb-3 line-clamp-3"><?php echo esc_html($item['description']); ?></p>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-red-600 font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
+                            <span class="text-wendy-red font-bold text-lg"><?php echo esc_html($item['price']); ?></span>
                             <?php if(isset($item['calories'])): ?>
                                 <span class="text-gray-500 text-sm"><?php echo esc_html($item['calories']); ?></span>
                             <?php endif; ?>
                         </div>
-                        <button class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                        <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
                             View Details
                         </button>
                     </div>
@@ -147,35 +147,39 @@ function filterByCategory(category) {
     // Update button styles
     categoryBtns.forEach(btn => {
         if (btn.dataset.category === category) {
-            btn.className = 'category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-red-600 text-white shadow-lg transform scale-105';
+            btn.className = 'category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-wendy-red text-white shadow-lg transform scale-105';
         } else {
-            btn.className = 'category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-red-600 shadow-md hover:shadow-lg';
+            btn.className = 'category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg';
         }
     });
     
     // Show/hide popular section
-    if (searchInput.value === '') {
-        popularSection.style.display = 'block';
+    if (searchInput && searchInput.value === '') {
+        if (popularSection) popularSection.style.display = 'block';
     } else {
-        popularSection.style.display = 'none';
+        if (popularSection) popularSection.style.display = 'none';
     }
     
-    filterItems();
+    filterMenuItems();
 }
 
-function filterItems() {
+function filterMenuItems() {
     const items = document.querySelectorAll('.menu-item');
-    const searchTerm = document.getElementById('menu-search').value.toLowerCase();
+    const searchInput = document.getElementById('menu-search');
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
     const noResults = document.getElementById('no-results');
+    
     let visibleCount = 0;
     
     items.forEach(item => {
-        const category = item.dataset.category;
-        const name = item.dataset.name;
-        const description = item.dataset.description;
+        const itemCategory = item.dataset.category;
+        const itemName = item.dataset.name;
+        const itemDescription = item.dataset.description;
         
-        const matchesCategory = currentCategory === 'all' || category === currentCategory;
-        const matchesSearch = searchTerm === '' || name.includes(searchTerm) || description.includes(searchTerm);
+        const matchesCategory = currentCategory === 'all' || itemCategory === currentCategory;
+        const matchesSearch = searchTerm === '' || 
+                             itemName.includes(searchTerm) || 
+                             itemDescription.includes(searchTerm);
         
         if (matchesCategory && matchesSearch) {
             item.style.display = 'block';
@@ -185,22 +189,29 @@ function filterItems() {
         }
     });
     
-    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-}
-
-// Search functionality
-document.getElementById('menu-search').addEventListener('input', function() {
-    const popularSection = document.getElementById('popular-section');
-    if (this.value === '') {
-        popularSection.style.display = 'block';
-    } else {
-        popularSection.style.display = 'none';
+    if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     }
-    filterItems();
-});
+    
+    // Hide popular section if searching
+    const popularSection = document.getElementById('popular-section');
+    if (popularSection && searchTerm !== '') {
+        popularSection.style.display = 'none';
+    } else if (popularSection) {
+        popularSection.style.display = 'block';
+    }
+}
 
 // Initialize with 'all' category selected
 document.addEventListener('DOMContentLoaded', function() {
     filterByCategory('all');
+    
+    // Set up search functionality
+    const searchInput = document.getElementById('menu-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            filterMenuItems();
+        });
+    }
 });
 </script>
