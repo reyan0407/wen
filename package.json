@@ -1,0 +1,17 @@
+{
+  "name": "wendysmenu-website",
+  "version": "1.0.0",
+  "description": "Complete Wendy's menu website with search, filtering, and responsive design",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "keywords": ["menu", "restaurant", "wendy's", "food"],
+  "author": "WendysMenu Fan Site",
+  "license": "MIT"
+}
