@@ -89,6 +89,20 @@
                     },
                     {
                         "@type": "MenuItem",
+                        "name": "Dave's Double®",
+                        "description": "Two quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "8.99",
+                            "priceCurrency": "USD"
+                        },
+                        "nutrition": {
+                            "@type": "NutritionInformation",
+                            "calories": "820"
+                        }
+                    },
+                    {
+                        "@type": "MenuItem",
                         "name": "Baconator®",
                         "description": "A half-pound of fresh beef, six strips of Applewood smoked bacon, American cheese, ketchup, and mayo.",
                         "offers": {
@@ -120,6 +134,20 @@
                             "@type": "NutritionInformation",
                             "calories": "510"
                         }
+                    },
+                    {
+                        "@type": "MenuItem",
+                        "name": "Chicken Nuggets (10 pc)",
+                        "description": "Ten pieces of crispy, juicy chicken nuggets made with premium white meat.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "5.99",
+                            "priceCurrency": "USD"
+                        },
+                        "nutrition": {
+                            "@type": "NutritionInformation",
+                            "calories": "450"
+                        }
                     }
                 ]
             }
@@ -150,15 +178,10 @@
     </script>
     
     <style>
-        /* Custom styles for menu items */
-        .menu-item {
-            position: relative;
-            overflow: hidden;
-        }
-        
+        /* Menu item styles */
         .menu-item-image {
-            width: 100%;
             height: 200px;
+            width: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
@@ -167,23 +190,32 @@
             transform: scale(1.05);
         }
         
-        .menu-item-content {
-            padding: 1rem;
-        }
-        
         .menu-item-badge {
             position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
+            top: 10px;
+            right: 10px;
             background-color: #f59e0b;
             color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 0.25rem 0.5rem;
+            padding: 4px 8px;
             border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Category button styles */
+        .category-btn.active {
+            background-color: #dc2626;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Search input styles */
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
         }
     </style>
 </head>
@@ -265,20 +297,22 @@
         <!-- Breadcrumb Navigation -->
         <section class="bg-white py-4 border-b">
             <div class="container mx-auto px-4">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
+                <nav class="breadcrumb flex items-center space-x-2 text-sm" aria-label="Breadcrumb">
                     <a href="/" class="text-wendy-red hover:underline">Home</a>
-                    <span class="mx-2 text-gray-400">/</span>
+                    <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                     <span class="text-gray-600">Menu</span>
                 </nav>
             </div>
         </section>
 
-        <!-- Menu Hero Section -->
+        <!-- Menu Header -->
         <section class="py-12 bg-gradient-to-br from-wendy-red to-wendy-dark-red text-white">
             <div class="container mx-auto px-4 text-center">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Menu</h1>
                 <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
-                    Browse our complete menu with detailed descriptions, current pricing, and nutritional information
+                    Explore our complete menu with fresh, never frozen beef and made-to-order favorites
                 </p>
                 
                 <!-- Search Bar -->
@@ -288,203 +322,65 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                         <input type="text" id="menu-search" placeholder="Search menu items..." 
-                               class="w-full pl-10 pr-4 py-3 border-none rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-colors duration-200 text-gray-900">
+                               class="w-full pl-10 pr-4 py-3 border border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 bg-white text-gray-900 search-input">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Menu Categories -->
-        <section class="py-12 bg-white">
+        <!-- Category Filter -->
+        <section class="py-8 bg-white border-b">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Menu Categories</h2>
-                
-                <div class="flex flex-wrap justify-center gap-3 mb-12" id="category-buttons">
-                    <button data-category="all" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-wendy-red text-white shadow-lg transform scale-105">
+                <div class="flex flex-wrap justify-center gap-3" id="category-buttons">
+                    <button class="category-btn active px-6 py-3 rounded-full font-medium transition-all duration-300" data-category="all">
                         All Items
                     </button>
-                    <button data-category="burgers" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="burgers">
                         Burgers
                     </button>
-                    <button data-category="chicken" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="chicken">
                         Chicken
                     </button>
-                    <button data-category="breakfast" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="breakfast">
                         Breakfast
                     </button>
-                    <button data-category="salads" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="salads">
                         Salads
                     </button>
-                    <button data-category="fries" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="fries">
                         Fries & Sides
                     </button>
-                    <button data-category="beverages" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="beverages">
                         Beverages
                     </button>
-                    <button data-category="frosty" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="frosty">
                         Frosty & Desserts
                     </button>
-                    <button data-category="kids" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="kids">
                         Kids Meals
                     </button>
-                    <button data-category="combos" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
-                        Combos
-                    </button>
-                    <button data-category="deals" class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg">
+                    <button class="category-btn px-6 py-3 rounded-full font-medium transition-all duration-300 bg-white text-gray-700 hover:bg-red-50 hover:text-wendy-red shadow-md hover:shadow-lg" data-category="deals">
                         Deals & Offers
                     </button>
                 </div>
+            </div>
+        </section>
+
+        <!-- Popular Items Section -->
+        <section id="popular-section" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+                    <svg class="w-8 h-8 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Fan Favorites
+                </h2>
                 
-                <!-- Popular Items Section -->
-                <div id="popular-section" class="mb-12">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                        <svg class="text-yellow-500 mr-2 w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        Popular Items
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="popular-items-grid">
-                        <!-- Dave's Single -->
-                        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers" data-name="dave's single" data-description="a quarter-pound of fresh beef, american cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion on a toasted bun.">
-                            <a href="/daves-single/" class="block no-underline">
-                                <div class="relative">
-                                    <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                         alt="Dave's Single®" class="menu-item-image">
-                                    <div class="menu-item-badge">
-                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                        </svg>
-                                        Popular
-                                    </div>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Single®</h3>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">A quarter-pound of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion on a toasted bun.</p>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-wendy-red font-bold text-lg">$6.99</span>
-                                        <span class="text-gray-500 text-sm">570 Cal</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Baconator -->
-                        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers" data-name="baconator" data-description="a half-pound of fresh beef, six strips of applewood smoked bacon, american cheese, ketchup, and mayo.">
-                            <a href="/baconator/" class="block no-underline">
-                                <div class="relative">
-                                    <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                         alt="Baconator®" class="menu-item-image">
-                                    <div class="menu-item-badge">
-                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                        </svg>
-                                        Popular
-                                    </div>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h3 class="font-bold text-lg text-gray-900 mb-2">Baconator®</h3>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">A half-pound of fresh beef, six strips of Applewood smoked bacon, American cheese, ketchup, and mayo.</p>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-wendy-red font-bold text-lg">$10.99</span>
-                                        <span class="text-gray-500 text-sm">950 Cal</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Dave's Double -->
-                        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers" data-name="dave's double" data-description="two quarter-pound patties of fresh beef, american cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.">
-                            <a href="/daves-double/" class="block no-underline">
-                                <div class="relative">
-                                    <img src="https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                         alt="Dave's Double®" class="menu-item-image">
-                                </div>
-                                <div class="menu-item-content">
-                                    <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Double®</h3>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Two quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.</p>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-wendy-red font-bold text-lg">$8.99</span>
-                                        <span class="text-gray-500 text-sm">820 Cal</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Dave's Triple -->
-                        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers" data-name="dave's triple" data-description="three quarter-pound patties of fresh beef, american cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.">
-                            <a href="/daves-triple/" class="block no-underline">
-                                <div class="relative">
-                                    <img src="https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                         alt="Dave's Triple®" class="menu-item-image">
-                                </div>
-                                <div class="menu-item-content">
-                                    <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Triple®</h3>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Three quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.</p>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-wendy-red font-bold text-lg">$10.99</span>
-                                        <span class="text-gray-500 text-sm">1070 Cal</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Spicy Chicken Sandwich -->
-                        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="chicken" data-name="spicy chicken sandwich" data-description="a juicy chicken breast marinated and breaded in our unique, fiery blend of peppers and spices.">
-                            <a href="/spicy-chicken-sandwich/" class="block no-underline">
-                                <div class="relative">
-                                    <img src="https://images.pexels.com/photos/5474835/pexels-photo-5474835.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                         alt="Spicy Chicken Sandwich" class="menu-item-image">
-                                    <div class="menu-item-badge">
-                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                        </svg>
-                                        Popular
-                                    </div>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h3 class="font-bold text-lg text-gray-900 mb-2">Spicy Chicken Sandwich</h3>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">A juicy chicken breast marinated and breaded in our unique, fiery blend of peppers and spices.</p>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-wendy-red font-bold text-lg">$6.49</span>
-                                        <span class="text-gray-500 text-sm">510 Cal</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Breakfast Baconator -->
-                        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="breakfast" data-name="breakfast baconator" data-description="grilled sausage, applewood smoked bacon, american cheese, swiss cheese, and a fresh-cracked egg on a brioche bun.">
-                            <a href="/breakfast-baconator/" class="block no-underline">
-                                <div class="relative">
-                                    <img src="https://images.pexels.com/photos/139746/pexels-photo-139746.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                         alt="Breakfast Baconator®" class="menu-item-image">
-                                    <div class="menu-item-badge">
-                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                        </svg>
-                                        Popular
-                                    </div>
-                                </div>
-                                <div class="menu-item-content">
-                                    <h3 class="font-bold text-lg text-gray-900 mb-2">Breakfast Baconator®</h3>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Grilled sausage, Applewood smoked bacon, American cheese, Swiss cheese, and a fresh-cracked egg on a brioche bun.</p>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-wendy-red font-bold text-lg">$5.99</span>
-                                        <span class="text-gray-500 text-sm">710 Cal</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- All Menu Items -->
-                <h3 class="text-2xl font-bold text-gray-900 mb-6">All Menu Items</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-items-grid">
-                    <!-- Burgers Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="popular-items-grid">
+                    <!-- Dave's Single -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
-                        <a href="/daves-single/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/daves-single/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
                                      alt="Dave's Single®" class="menu-item-image">
                                 <div class="menu-item-badge">
@@ -494,54 +390,24 @@
                                     Popular
                                 </div>
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Single®</h3>
                                 <p class="text-gray-600 text-sm mb-3 line-clamp-2">A quarter-pound of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion on a toasted bun.</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$6.99</span>
                                     <span class="text-gray-500 text-sm">570 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                     
+                    <!-- Baconator -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
-                        <a href="/daves-double/" class="block no-underline">
-                            <div class="relative">
-                                <img src="https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                     alt="Dave's Double®" class="menu-item-image">
-                            </div>
-                            <div class="menu-item-content">
-                                <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Double®</h3>
-                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Two quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.</p>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-wendy-red font-bold text-lg">$8.99</span>
-                                    <span class="text-gray-500 text-sm">820 Cal</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
-                        <a href="/daves-triple/" class="block no-underline">
-                            <div class="relative">
-                                <img src="https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                     alt="Dave's Triple®" class="menu-item-image">
-                            </div>
-                            <div class="menu-item-content">
-                                <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Triple®</h3>
-                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Three quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.</p>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-wendy-red font-bold text-lg">$10.99</span>
-                                    <span class="text-gray-500 text-sm">1070 Cal</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
-                        <a href="/baconator/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/baconator/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
                                      alt="Baconator®" class="menu-item-image">
                                 <div class="menu-item-badge">
@@ -551,38 +417,24 @@
                                     Popular
                                 </div>
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Baconator®</h3>
                                 <p class="text-gray-600 text-sm mb-3 line-clamp-2">A half-pound of fresh beef, six strips of Applewood smoked bacon, American cheese, ketchup, and mayo.</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$10.99</span>
                                     <span class="text-gray-500 text-sm">950 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                     
-                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
-                        <a href="/son-of-baconator/" class="block no-underline">
-                            <div class="relative">
-                                <img src="https://images.pexels.com/photos/2983098/pexels-photo-2983098.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                     alt="Son of Baconator®" class="menu-item-image">
-                            </div>
-                            <div class="menu-item-content">
-                                <h3 class="font-bold text-lg text-gray-900 mb-2">Son of Baconator®</h3>
-                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">A quarter-pound of fresh beef, four strips of Applewood smoked bacon, American cheese, ketchup, and mayo.</p>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-wendy-red font-bold text-lg">$7.99</span>
-                                    <span class="text-gray-500 text-sm">630 Cal</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <!-- Chicken Section -->
+                    <!-- Spicy Chicken Sandwich -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="chicken">
-                        <a href="/spicy-chicken-sandwich/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/spicy-chicken-sandwich/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/5474835/pexels-photo-5474835.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
                                      alt="Spicy Chicken Sandwich" class="menu-item-image">
                                 <div class="menu-item-badge">
@@ -592,38 +444,228 @@
                                     Popular
                                 </div>
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Spicy Chicken Sandwich</h3>
                                 <p class="text-gray-600 text-sm mb-3 line-clamp-2">A juicy chicken breast marinated and breaded in our unique, fiery blend of peppers and spices.</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$6.49</span>
                                     <span class="text-gray-500 text-sm">510 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Menu Items -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">All Menu Items</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-items-grid">
+                    <!-- Burgers Category -->
+                    <!-- Dave's Single -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
+                        <a href="/daves-single/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Dave's Single®" class="menu-item-image">
+                                <div class="menu-item-badge">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Popular
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Single®</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">A quarter-pound of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion on a toasted bun.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$6.99</span>
+                                    <span class="text-gray-500 text-sm">570 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                     
+                    <!-- Dave's Double -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
+                        <a href="/daves-double/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Dave's Double®" class="menu-item-image">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Double®</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Two quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$8.99</span>
+                                    <span class="text-gray-500 text-sm">820 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Dave's Triple -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
+                        <a href="/daves-triple/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Dave's Triple®" class="menu-item-image">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Dave's Triple®</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Three quarter-pound patties of fresh beef, American cheese, crisp lettuce, tomato, pickle, ketchup, mayo, and onion.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$10.99</span>
+                                    <span class="text-gray-500 text-sm">1070 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Baconator -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
+                        <a href="/baconator/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Baconator®" class="menu-item-image">
+                                <div class="menu-item-badge">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Popular
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Baconator®</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">A half-pound of fresh beef, six strips of Applewood smoked bacon, American cheese, ketchup, and mayo.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$10.99</span>
+                                    <span class="text-gray-500 text-sm">950 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Son of Baconator -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="burgers">
+                        <a href="/son-of-baconator/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/2983098/pexels-photo-2983098.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Son of Baconator®" class="menu-item-image">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Son of Baconator®</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">A quarter-pound of fresh beef, four strips of Applewood smoked bacon, American cheese, ketchup, and mayo.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$7.99</span>
+                                    <span class="text-gray-500 text-sm">630 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Chicken Category -->
+                    <!-- Spicy Chicken Sandwich -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="chicken">
-                        <a href="/classic-chicken-sandwich/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/spicy-chicken-sandwich/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/5474835/pexels-photo-5474835.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Spicy Chicken Sandwich" class="menu-item-image">
+                                <div class="menu-item-badge">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Popular
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Spicy Chicken Sandwich</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">A juicy chicken breast marinated and breaded in our unique, fiery blend of peppers and spices.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$6.49</span>
+                                    <span class="text-gray-500 text-sm">510 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Classic Chicken Sandwich -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="chicken">
+                        <a href="/classic-chicken-sandwich/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/5474836/pexels-photo-5474836.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
                                      alt="Classic Chicken Sandwich" class="menu-item-image">
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Classic Chicken Sandwich</h3>
                                 <p class="text-gray-600 text-sm mb-3 line-clamp-2">A juicy, lightly breaded crispy chicken breast with crisp lettuce, tomato, mayo, and pickles.</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$5.99</span>
                                     <span class="text-gray-500 text-sm">490 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                     
-                    <!-- Breakfast Section -->
+                    <!-- Chicken Nuggets -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="chicken">
+                        <a href="/chicken-nuggets/" class="block">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                     alt="Chicken Nuggets (10 pc)" class="menu-item-image">
+                                <div class="menu-item-badge">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Popular
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Chicken Nuggets (10 pc)</h3>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Ten pieces of crispy, juicy chicken nuggets made with premium white meat.</p>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-wendy-red font-bold text-lg">$5.99</span>
+                                    <span class="text-gray-500 text-sm">420 Cal</span>
+                                </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Breakfast Category -->
+                    <!-- Breakfast Baconator -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="breakfast">
-                        <a href="/breakfast-baconator/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/breakfast-baconator/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/139746/pexels-photo-139746.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
                                      alt="Breakfast Baconator®" class="menu-item-image">
                                 <div class="menu-item-badge">
@@ -633,23 +675,27 @@
                                     Popular
                                 </div>
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Breakfast Baconator®</h3>
                                 <p class="text-gray-600 text-sm mb-3 line-clamp-2">Grilled sausage, Applewood smoked bacon, American cheese, Swiss cheese, and a fresh-cracked egg on a brioche bun.</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$5.99</span>
                                     <span class="text-gray-500 text-sm">710 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                     
-                    <!-- Fries & Sides Section -->
+                    <!-- Fries & Sides Category -->
+                    <!-- Natural Cut Fries -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="fries">
-                        <a href="/natural-cut-fries/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/natural-cut-fries/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/1893555/pexels-photo-1893555.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                     alt="Natural Cut Fries" class="menu-item-image">
+                                     alt="Natural Cut Fries (Medium)" class="menu-item-image">
                                 <div class="menu-item-badge">
                                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -657,23 +703,27 @@
                                     Popular
                                 </div>
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Natural Cut Fries (Medium)</h3>
-                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Natural-cut, sea salt seasoned fries cooked in 100% sunflower oil.</p>
-                                <div class="flex justify-between items-center">
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">Natural cut, sea salt seasoned fries cooked in 100% sunflower oil.</p>
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$2.99</span>
                                     <span class="text-gray-500 text-sm">420 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                     
-                    <!-- Frosty & Desserts Section -->
+                    <!-- Frosty & Desserts Category -->
+                    <!-- Chocolate Frosty -->
                     <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden menu-item" data-category="frosty">
-                        <a href="/chocolate-frosty/" class="block no-underline">
-                            <div class="relative">
+                        <a href="/chocolate-frosty/" class="block">
+                            <div class="relative overflow-hidden">
                                 <img src="https://images.pexels.com/photos/3727250/pexels-photo-3727250.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                     alt="Chocolate Frosty®" class="menu-item-image">
+                                     alt="Chocolate Frosty® (Small)" class="menu-item-image">
                                 <div class="menu-item-badge">
                                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -681,25 +731,28 @@
                                     Popular
                                 </div>
                             </div>
-                            <div class="menu-item-content">
+                            <div class="p-4">
                                 <h3 class="font-bold text-lg text-gray-900 mb-2">Chocolate Frosty® (Small)</h3>
                                 <p class="text-gray-600 text-sm mb-3 line-clamp-2">The original thick and creamy chocolate Frosty.</p>
-                                <div class="flex justify-between items-center">
+                                <div class="flex justify-between items-center mb-2">
                                     <span class="text-wendy-red font-bold text-lg">$2.99</span>
                                     <span class="text-gray-500 text-sm">350 Cal</span>
                                 </div>
+                                <button class="w-full bg-wendy-red hover:bg-wendy-dark-red text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200">
+                                    View Details
+                                </button>
                             </div>
                         </a>
                     </div>
                 </div>
                 
                 <!-- No Results Message -->
-                <div id="no-results" class="text-center py-12 hidden">
+                <div id="no-results" class="hidden py-12 text-center">
                     <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <h3 class="text-xl font-semibold text-gray-700 mb-2">No items found</h3>
-                    <p class="text-gray-500">Try a different search term or browse by category.</p>
+                    <p class="text-gray-500">Try a different search term or browse by category</p>
                 </div>
             </div>
         </section>
@@ -708,10 +761,14 @@
         <section class="py-8 bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="bg-white rounded-lg p-6 shadow-md">
-                    <h3 class="font-semibold text-gray-900 mb-2">Menu Information</h3>
-                    <p class="text-sm text-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Menu Information</h3>
+                    <p class="text-gray-600 text-sm">
                         Prices and availability may vary by location. Nutritional information is approximate and based on standard recipes. 
                         Please visit your local restaurant for current pricing and to verify nutritional information.
+                    </p>
+                    <p class="text-gray-600 text-sm mt-2">
+                        <strong>Disclaimer:</strong> This website is not affiliated with or endorsed by any restaurant chain. 
+                        All trademarks belong to their respective owners.
                     </p>
                 </div>
             </div>
@@ -812,55 +869,36 @@
     <script src="../script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Category filter functionality
+            // Set up category filtering
             const categoryButtons = document.querySelectorAll('.category-btn');
             const menuItems = document.querySelectorAll('.menu-item');
-            
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    
-                    // Update active button
-                    categoryButtons.forEach(btn => {
-                        btn.classList.remove('bg-wendy-red', 'text-white', 'scale-105');
-                        btn.classList.add('bg-white', 'text-gray-700');
-                    });
-                    
-                    this.classList.remove('bg-white', 'text-gray-700');
-                    this.classList.add('bg-wendy-red', 'text-white', 'scale-105');
-                    
-                    // Filter menu items
-                    menuItems.forEach(item => {
-                        if (category === 'all' || item.dataset.category === category) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Search functionality
             const searchInput = document.getElementById('menu-search');
             const noResults = document.getElementById('no-results');
+            const popularSection = document.getElementById('popular-section');
             
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
+            // Filter by category
+            function filterByCategory(category) {
+                // Update active button
+                categoryButtons.forEach(btn => {
+                    if (btn.dataset.category === category) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Filter items
                 let visibleCount = 0;
+                const searchTerm = searchInput.value.toLowerCase();
                 
                 menuItems.forEach(item => {
-                    const name = item.dataset.name || '';
-                    const description = item.dataset.description || '';
-                    const category = item.dataset.category || '';
+                    const itemCategory = item.dataset.category;
+                    const itemText = item.textContent.toLowerCase();
                     
-                    // Get active category
-                    const activeCategory = document.querySelector('.category-btn.bg-wendy-red').dataset.category;
+                    const matchesCategory = category === 'all' || itemCategory === category;
+                    const matchesSearch = searchTerm === '' || itemText.includes(searchTerm);
                     
-                    // Check if item matches search and category
-                    const matchesSearch = name.includes(searchTerm) || description.includes(searchTerm);
-                    const matchesCategory = activeCategory === 'all' || category === activeCategory;
-                    
-                    if (matchesSearch && matchesCategory) {
+                    if (matchesCategory && matchesSearch) {
                         item.style.display = 'block';
                         visibleCount++;
                     } else {
@@ -870,10 +908,44 @@
                 
                 // Show/hide no results message
                 if (visibleCount === 0) {
-                    noResults.style.display = 'block';
+                    noResults.classList.remove('hidden');
                 } else {
-                    noResults.style.display = 'none';
+                    noResults.classList.add('hidden');
                 }
+                
+                // Show/hide popular section
+                if (searchTerm === '' && category === 'all') {
+                    popularSection.style.display = 'block';
+                } else {
+                    popularSection.style.display = 'none';
+                }
+            }
+            
+            // Set up event listeners
+            categoryButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterByCategory(this.dataset.category);
+                });
+            });
+            
+            searchInput.addEventListener('input', function() {
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                filterByCategory(activeCategory);
+            });
+            
+            // Initialize with 'all' category
+            filterByCategory('all');
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
             });
         });
     </script>
