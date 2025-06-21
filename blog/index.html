@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>Blog - Latest Food News & Stories | WendysMenu</title>
+    <meta name="title" content="Blog - Latest Food News & Stories | WendysMenu">
+    <meta name="description" content="Read the latest articles about menu items, food trends, nutrition tips, and restaurant news. Discover the stories behind your favorite Wendy's menu items.">
+    <meta name="keywords" content="Wendy's blog, food blog, burger stories, menu news, food trends, nutrition tips, restaurant news">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="WendysMenu Fan Site">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wendyssemenu.com/blog/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wendyssemenu.com/blog/">
+    <meta property="og:title" content="Blog - Latest Food News & Stories | WendysMenu">
+    <meta property="og:description" content="Read the latest articles about menu items, food trends, nutrition tips, and restaurant news. Discover the stories behind your favorite Wendy's menu items.">
+    <meta property="og:image" content="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1">
+    <meta property="og:site_name" content="WendysMenu">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wendyssemenu.com/blog/">
+    <meta property="twitter:title" content="Blog - Latest Food News & Stories | WendysMenu">
+    <meta property="twitter:description" content="Read the latest articles about menu items, food trends, nutrition tips, and restaurant news. Discover the stories behind your favorite Wendy's menu items.">
+    <meta property="twitter:image" content="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&dpr=1">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#dc2626">
+    <meta name="msapplication-TileColor" content="#dc2626">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://wendyssemenu.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wendy-red': '#dc2626',
+                        'wendy-dark-red': '#b91c1c',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://wendyssemenu.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://wendyssemenu.com/blog/"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Structured Data - Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "WendysMenu Blog",
+        "description": "Latest articles about menu items, food trends, nutrition tips, and restaurant news",
+        "url": "https://wendyssemenu.com/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "WendysMenu Fan Site",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://wendyssemenu.com/images/logo.webp"
+            }
+        }
+    }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Skip to content link for accessibility -->
+    <a class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-wendy-red text-white p-2 z-50" href="#main">
+        Skip to main content
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50" role="banner">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-wendy-red">
+                    <a href="/" class="no-underline text-wendy-red hover:text-wendy-dark-red" aria-label="WendysMenu Home">
+                        🍔 WendysMenu
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+                    <a href="/" class="nav-link font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                        Home
+                    </a>
+                    <a href="/menu/" class="nav-link font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                        Menu
+                    </a>
+                    <a href="/locations/" class="nav-link font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                        Find Wendy's
+                    </a>
+                    <a href="/blog/" class="nav-link font-medium transition-colors duration-200 hover:text-wendy-red text-wendy-red" aria-current="page">
+                        Blog
+                    </a>
+                    <a href="/about/" class="nav-link font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                        About
+                    </a>
+                    <a href="/contact/" class="nav-link font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                        Contact
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav id="mobile-menu" class="md:hidden pb-4 hidden" role="navigation" aria-label="Mobile navigation">
+                <a href="/" class="block w-full text-left py-2 font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                    Home
+                </a>
+                <a href="/menu/" class="block w-full text-left py-2 font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                    Menu
+                </a>
+                <a href="/locations/" class="block w-full text-left py-2 font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                    Find Wendy's
+                </a>
+                <a href="/blog/" class="block w-full text-left py-2 font-medium transition-colors duration-200 hover:text-wendy-red text-wendy-red" aria-current="page">
+                    Blog
+                </a>
+                <a href="/about/" class="block w-full text-left py-2 font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                    About
+                </a>
+                <a href="/contact/" class="block w-full text-left py-2 font-medium transition-colors duration-200 hover:text-wendy-red text-gray-700">
+                    Contact
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="site-main">
+        <!-- Breadcrumb Navigation -->
+        <section class="bg-white py-4 border-b">
+            <div class="container mx-auto px-4">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="/" class="text-wendy-red hover:underline">Home</a>
+                    <span class="mx-2 text-gray-400">/</span>
+                    <span class="text-gray-600">Blog</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Blog Header -->
+        <section class="py-12 bg-gradient-to-br from-wendy-red to-wendy-dark-red text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Blog</h1>
+                <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+                    Discover the stories behind your favorite menu items, nutrition tips, and the latest updates from the world of food
+                </p>
+                
+                <!-- Blog Categories -->
+                <div class="flex flex-wrap justify-center gap-3 mt-8">
+                    <button class="category-btn px-4 py-2 rounded-full font-medium transition-all duration-300 bg-white text-wendy-red shadow-md hover:shadow-lg">
+                        All Posts
+                    </button>
+                    <button class="category-btn px-4 py-2 rounded-full font-medium transition-all duration-300 bg-white bg-opacity-20 text-white hover:bg-white hover:text-wendy-red shadow-md hover:shadow-lg">
+                        Food History
+                    </button>
+                    <button class="category-btn px-4 py-2 rounded-full font-medium transition-all duration-300 bg-white bg-opacity-20 text-white hover:bg-white hover:text-wendy-red shadow-md hover:shadow-lg">
+                        Menu Hacks
+                    </button>
+                    <button class="category-btn px-4 py-2 rounded-full font-medium transition-all duration-300 bg-white bg-opacity-20 text-white hover:bg-white hover:text-wendy-red shadow-md hover:shadow-lg">
+                        Food Quality
+                    </button>
+                    <button class="category-btn px-4 py-2 rounded-full font-medium transition-all duration-300 bg-white bg-opacity-20 text-white hover:bg-white hover:text-wendy-red shadow-md hover:shadow-lg">
+                        Desserts
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Post -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="relative rounded-xl overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&dpr=1" 
+                             alt="The History of the Baconator: How a Legendary Burger Was Born" 
+                             class="w-full h-[400px] object-cover">
+                        <div class="absolute top-4 left-4 bg-wendy-red text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Featured
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Food History</span>
+                            <span class="mx-2">•</span>
+                            <span>June 15, 2024</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">The History of the Baconator: How a Legendary Burger Was Born</h2>
+                        <p class="text-gray-600">
+                            Discover the fascinating story behind Wendy's iconic Baconator and how it became a fan favorite since its introduction in 2007. From its humble beginnings to becoming one of the most recognized burgers in fast food history, the Baconator has a story worth telling.
+                        </p>
+                        <div class="flex items-center pt-4">
+                            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-3">
+                                MJ
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Mike Johnson</p>
+                                <p class="text-sm text-gray-500">Food Historian</p>
+                            </div>
+                        </div>
+                        <a href="/blog-1/" class="inline-flex items-center bg-wendy-red hover:bg-wendy-dark-red text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 mt-4">
+                            Read Full Article
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Blog Posts -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+                
+                <div id="all-blog-posts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-1">
+                        <a href="/blog-1/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="The History of the Baconator" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Food History</span>
+                                    <span class="mx-2">•</span>
+                                    <span>June 15, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">The History of the Baconator: How a Legendary Burger Was Born</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Discover the fascinating story behind Wendy's iconic Baconator and how it became a fan favorite since its introduction in 2007.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        MJ
+                                    </div>
+                                    <span class="text-sm text-gray-600">Mike Johnson</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 2 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-2">
+                        <a href="/blog-2/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Fresh vs. Frozen Beef" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Food Quality</span>
+                                    <span class="mx-2">•</span>
+                                    <span>May 28, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">Fresh vs. Frozen: Why Fresh Beef Makes a Better Burger</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Learn why Wendy's commitment to fresh, never frozen beef creates a juicier, more flavorful burger experience every time.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        SW
+                                    </div>
+                                    <span class="text-sm text-gray-600">Sarah Williams</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 3 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-3">
+                        <a href="/blog-3/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Secret Menu Items" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Menu Hacks</span>
+                                    <span class="mx-2">•</span>
+                                    <span>April 10, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">The Ultimate Guide to Wendy's Secret Menu Items</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Explore hidden menu hacks and secret combinations that Wendy's fans have discovered over the years.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        CT
+                                    </div>
+                                    <span class="text-sm text-gray-600">Chris Taylor</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 4 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-4">
+                        <a href="/blog-4/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/139746/pexels-photo-139746.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Breakfast Menu Evolution" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Menu History</span>
+                                    <span class="mx-2">•</span>
+                                    <span>March 22, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">The Evolution of Wendy's Breakfast Menu</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">From its early days to the current lineup, see how Wendy's breakfast offerings have evolved to become morning favorites.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        JM
+                                    </div>
+                                    <span class="text-sm text-gray-600">Jessica Martinez</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 5 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-5">
+                        <a href="/blog-5/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/3727250/pexels-photo-3727250.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Frosty Dessert" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Desserts</span>
+                                    <span class="mx-2">•</span>
+                                    <span>February 15, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">Frosty Favorites: The Story Behind Wendy's Iconic Dessert</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Discover how the beloved Frosty became a signature item and why it's neither a milkshake nor ice cream.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        DW
+                                    </div>
+                                    <span class="text-sm text-gray-600">David Wilson</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 6 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-6">
+                        <a href="/blog-6/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/2087748/pexels-photo-2087748.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="International Menu Items" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">International</span>
+                                    <span class="mx-2">•</span>
+                                    <span>January 30, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">Wendy's Around the World: International Menu Items</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Take a global tour of unique Wendy's menu items that are only available in specific countries.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        EC
+                                    </div>
+                                    <span class="text-sm text-gray-600">Emily Chang</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 7 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-7">
+                        <a href="/blog-7/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/5474835/pexels-photo-5474835.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Perfect Chicken Sandwich" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Food Craft</span>
+                                    <span class="mx-2">•</span>
+                                    <span>January 12, 2024</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">The Art of the Perfect Chicken Sandwich</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Learn what makes Wendy's chicken sandwiches stand out from the competition in the fast food chicken wars.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        RJ
+                                    </div>
+                                    <span class="text-sm text-gray-600">Robert Johnson</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Blog Post 8 -->
+                    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden" id="blog-8">
+                        <a href="/blog-8/" class="block no-underline">
+                            <img src="https://images.pexels.com/photos/2454533/pexels-photo-2454533.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Sustainable Practices" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center text-sm text-gray-500 mb-2">
+                                    <span class="bg-wendy-red bg-opacity-10 text-wendy-red px-2 py-1 rounded-full text-xs font-medium">Sustainability</span>
+                                    <span class="mx-2">•</span>
+                                    <span>December 5, 2023</span>
+                                </div>
+                                <h3 class="font-bold text-xl text-gray-900 mb-2 line-clamp-2">Wendy's Sustainable Practices: A Look at Eco-Friendly Initiatives</h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">Explore how Wendy's is working to reduce its environmental footprint through various sustainability programs.</p>
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-medium text-sm mr-2">
+                                        LG
+                                    </div>
+                                    <span class="text-sm text-gray-600">Lisa Green</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center">
+                    <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <span class="sr-only">Previous</span>
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-current="page" class="z-10 bg-wendy-red border-wendy-red text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                            1
+                        </a>
+                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                            2
+                        </a>
+                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                            3
+                        </a>
+                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                            ...
+                        </span>
+                        <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                            8
+                        </a>
+                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <span class="sr-only">Next</span>
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10l-3.293-3.293a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto bg-gray-50 rounded-xl p-8 shadow-lg">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Subscribe to Our Newsletter</h2>
+                        <p class="text-gray-600">Get the latest articles, menu updates, and exclusive offers delivered straight to your inbox.</p>
+                    </div>
+                    <form class="flex flex-col md:flex-row gap-4">
+                        <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wendy-red focus:border-wendy-red">
+                        <button type="submit" class="bg-wendy-red hover:bg-wendy-dark-red text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200">
+                            Subscribe
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-500 mt-4 text-center">By subscribing, you agree to our <a href="/privacy-policy/" class="text-wendy-red hover:underline">Privacy Policy</a>. We'll never share your email with anyone else.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brand & Description -->
+                <div>
+                    <h3 class="text-2xl font-bold text-wendy-red mb-4">WendysMenu</h3>
+                    <p class="text-gray-300 mb-4">
+                        Your unofficial guide to delicious menu items. 
+                        Browse, discover, and plan your next meal with ease.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="/" class="text-gray-300 hover:text-wendy-red transition-colors duration-200">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/menu/" class="text-gray-300 hover:text-wendy-red transition-colors duration-200">
+                                Menu
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/locations/" class="text-gray-300 hover:text-wendy-red transition-colors duration-200">
+                                Find Wendy's
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/blog/" class="text-gray-300 hover:text-wendy-red transition-colors duration-200">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about/" class="text-gray-300 hover:text-wendy-red transition-colors duration-200">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact/" class="text-gray-300 hover:text-wendy-red transition-colors duration-200">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal & Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Information</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>
+                            <a href="/privacy-policy/" class="hover:text-wendy-red transition-colors duration-200">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/terms-of-service/" class="hover:text-wendy-red transition-colors duration-200">
+                                Terms of Service
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/disclaimer/" class="hover:text-wendy-red transition-colors duration-200">
+                                Disclaimer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="border-gray-700 my-8">
+
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    © 2024 WendysMenu. All rights reserved.
+                </p>
+                <p class="text-gray-400 flex items-center">
+                    Made with 
+                    <svg class="w-4 h-4 text-wendy-red mx-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    for food fans
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+    <script>
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+        
+        // Category filter functionality
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('bg-white', 'text-wendy-red');
+                    btn.classList.add('bg-white', 'bg-opacity-20', 'text-white');
+                });
+                
+                this.classList.remove('bg-white', 'bg-opacity-20', 'text-white');
+                this.classList.add('bg-white', 'text-wendy-red');
+                
+                // In a real implementation, this would filter the blog posts
+                // For this demo, we'll just log the category
+                console.log('Filtering by category:', this.textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html>

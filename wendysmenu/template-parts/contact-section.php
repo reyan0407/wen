@@ -48,8 +48,8 @@
                     <div class="mt-8 p-6 bg-red-50 rounded-lg">
                         <h3 class="font-semibold text-gray-900 mb-2">Important Notice</h3>
                         <p class="text-sm text-gray-700">
-                            This is not an official Wendy's contact form. For official Wendy's customer service, 
-                            please visit the official Wendy's website or contact your local restaurant directly.
+                            This is not an official contact form. For official customer service, 
+                            please visit the official website or contact your local restaurant directly.
                         </p>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Wendy's Full Menu
+                Complete Menu
             </h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                 Fresh, never frozen beef and made-to-order favorites. 
@@ -128,7 +128,7 @@
             <h4 class="font-semibold text-gray-900 mb-2">Menu Information</h4>
             <p class="text-sm text-gray-600">
                 Prices and availability may vary by location. Nutritional information is approximate and based on standard recipes. 
-                Please visit your local Wendy's restaurant for current pricing and to verify nutritional information.
+                Please visit your local restaurant for current pricing and to verify nutritional information.
             </p>
         </div>
     </div>

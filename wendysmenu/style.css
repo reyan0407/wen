@@ -1,4 +1,10 @@
-/* WendysMenu - SEO-Optimized Custom CSS */
+/*
+Theme Name: WendyssMenu
+Description: A fully SEO and speed optimized WordPress theme for browsing menu items with detailed information and pricing
+Version: 1.2
+Author: WendyssMenu Fan Site
+Text Domain: wendysmenu
+*/
 
 /* CSS Reset and Base Styles */
 *,
@@ -93,6 +99,15 @@ body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* WordPress specific optimizations */
+.wp-block-group {
+    margin: 0;
+}
+
+.wp-site-blocks {
+    padding: 0;
 }
 
 /* Container and layout optimizations */
@@ -358,6 +373,26 @@ html {
     background-color: #f0fdf4;
 }
 
+/* Optimized grid layouts */
+.grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Aspect ratio utilities */
+.aspect-ratio-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-4-3 {
+    aspect-ratio: 4 / 3;
+}
+
+.aspect-ratio-1-1 {
+    aspect-ratio: 1 / 1;
+}
+
 /* Text selection */
 ::selection {
     background-color: #dc2626;
@@ -466,67 +501,6 @@ p {
     hyphens: auto;
 }
 
-/* Optimize for Core Web Vitals */
-.optimize-lcp {
-    content-visibility: auto;
-    contain-intrinsic-size: 200px;
-}
-
-.optimize-cls {
-    min-height: 200px;
-}
-
-.optimize-fid {
-    pointer-events: auto;
-}
-
-/* Cookie banner styles */
-#cookie-banner {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-/* AdSense optimization */
-.adsbygoogle {
-    display: block !important;
-    min-height: 100px;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-}
-
-/* SEO-friendly image containers */
-.image-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.image-container::before {
-    content: '';
-    display: block;
-    padding-top: 75%; /* 4:3 aspect ratio */
-}
-
-.image-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Structured data visibility (hidden but crawlable) */
-.structured-data {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-}
-
 /* Performance monitoring styles (development only) */
 .perf-monitor {
     position: fixed;
@@ -547,116 +521,16 @@ p {
     }
 }
 
-/* Social sharing buttons */
-.social-share {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+/* Optimize for Core Web Vitals */
+.optimize-lcp {
+    content-visibility: auto;
+    contain-intrinsic-size: 200px;
 }
 
-.social-share button {
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-    transition: all 0.2s ease;
+.optimize-cls {
+    min-height: 200px;
 }
 
-.social-share button:hover {
-    transform: translateY(-1px);
-}
-
-/* Breadcrumb navigation */
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-.breadcrumb a {
-    color: #dc2626;
-    text-decoration: none;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-/* Schema.org microdata styling */
-[itemscope] {
-    position: relative;
-}
-
-/* Enhanced focus indicators for better accessibility */
-.focus-visible:focus {
-    outline: 2px solid #dc2626;
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-
-/* Loading spinner */
-.spinner {
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid #dc2626;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Responsive typography */
-@media (min-width: 640px) {
-    html {
-        font-size: 18px;
-    }
-}
-
-@media (min-width: 1024px) {
-    html {
-        font-size: 20px;
-    }
-}
-
-/* Enhanced mobile menu */
-@media (max-width: 767px) {
-    #mobile-menu {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 0 0 1rem 1rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-    
-    #mobile-menu a {
-        border-radius: 0.5rem;
-        margin: 0.25rem 0;
-    }
-    
-    #mobile-menu a:hover {
-        background-color: rgba(220, 38, 38, 0.1);
-    }
-}
-
-/* Optimized grid layouts for different screen sizes */
-@media (min-width: 640px) {
-    .grid-responsive {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .grid-responsive {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 1280px) {
-    .grid-responsive {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.optimize-fid {
+    pointer-events: auto;
 }
