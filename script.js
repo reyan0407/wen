@@ -647,6 +647,9 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
     }
     
+    // Image gallery functionality for product pages
+    initializeImageGallery();
+    
     // Cookie consent
     initCookieConsent();
 });
@@ -957,6 +960,38 @@ function initCookieConsent() {
                 cookieBanner.classList.add('hidden');
             });
         }
+    }
+}
+
+// Initialize image gallery functionality for product pages
+function initializeImageGallery() {
+    // Check if we're on a product page
+    const mainImage = document.getElementById('main-image');
+    const thumbnailButtons = document.querySelectorAll('.thumbnail-btn');
+    
+    if (mainImage && thumbnailButtons.length > 0) {
+        // Set up click handlers for all thumbnail buttons
+        thumbnailButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the image source from the thumbnail's img element
+                const thumbnailImg = this.querySelector('img');
+                if (thumbnailImg) {
+                    const imageSrc = thumbnailImg.src.replace(/w=150&h=150/, 'w=600&h=600');
+                    
+                    // Update main image
+                    mainImage.src = imageSrc;
+                    
+                    // Update thumbnail borders
+                    thumbnailButtons.forEach(btn => {
+                        btn.classList.remove('border-wendy-red');
+                        btn.classList.add('border-transparent');
+                    });
+                    
+                    this.classList.remove('border-transparent');
+                    this.classList.add('border-wendy-red');
+                }
+            });
+        });
     }
 }
 
