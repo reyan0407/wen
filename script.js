@@ -654,6 +654,63 @@ document.addEventListener('DOMContentLoaded', function() {
     initCookieConsent();
 });
 
+// Initialize image gallery functionality for product pages
+function initializeImageGallery() {
+    // Check if we're on a product page
+    const mainImage = document.getElementById('main-image');
+    const thumbnailButtons = document.querySelectorAll('.thumbnail-btn');
+    
+    if (mainImage && thumbnailButtons.length > 0) {
+        // Set up click handlers for all thumbnail buttons
+        thumbnailButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the image source from the thumbnail's img element or data attribute
+                const thumbnailImg = this.querySelector('img');
+                let imageSrc = '';
+                
+                if (this.dataset.image) {
+                    // Use data attribute if available
+                    imageSrc = this.dataset.image;
+                } else if (thumbnailImg) {
+                    // Otherwise use the img src and convert to larger size
+                    imageSrc = thumbnailImg.src.replace(/w=150&h=150/, 'w=600&h=600');
+                }
+                
+                if (imageSrc) {
+                    // Update main image
+                    mainImage.src = imageSrc;
+                    
+                    // Update thumbnail borders
+                    thumbnailButtons.forEach(btn => {
+                        btn.classList.remove('border-wendy-red');
+                        btn.classList.add('border-transparent');
+                    });
+                    
+                    this.classList.remove('border-transparent');
+                    this.classList.add('border-wendy-red');
+                }
+            });
+        });
+    }
+}
+
+// Image gallery functionality for product pages
+function changeMainImage(imageSrc, thumbnailElement) {
+    const mainImage = document.getElementById('main-image');
+    if (mainImage) {
+        mainImage.src = imageSrc;
+        
+        // Update thumbnail borders
+        document.querySelectorAll('.thumbnail-btn').forEach(btn => {
+            btn.classList.remove('border-wendy-red');
+            btn.classList.add('border-transparent');
+        });
+        
+        thumbnailElement.classList.remove('border-transparent');
+        thumbnailElement.classList.add('border-wendy-red');
+    }
+}
+
 // Load time-based menu categories
 function loadTimeCategories() {
     const categoriesContainer = document.getElementById('main-menu-categories');
@@ -960,54 +1017,5 @@ function initCookieConsent() {
                 cookieBanner.classList.add('hidden');
             });
         }
-    }
-}
-
-// Initialize image gallery functionality for product pages
-function initializeImageGallery() {
-    // Check if we're on a product page
-    const mainImage = document.getElementById('main-image');
-    const thumbnailButtons = document.querySelectorAll('.thumbnail-btn');
-    
-    if (mainImage && thumbnailButtons.length > 0) {
-        // Set up click handlers for all thumbnail buttons
-        thumbnailButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Get the image source from the thumbnail's img element
-                const thumbnailImg = this.querySelector('img');
-                if (thumbnailImg) {
-                    const imageSrc = thumbnailImg.src.replace(/w=150&h=150/, 'w=600&h=600');
-                    
-                    // Update main image
-                    mainImage.src = imageSrc;
-                    
-                    // Update thumbnail borders
-                    thumbnailButtons.forEach(btn => {
-                        btn.classList.remove('border-wendy-red');
-                        btn.classList.add('border-transparent');
-                    });
-                    
-                    this.classList.remove('border-transparent');
-                    this.classList.add('border-wendy-red');
-                }
-            });
-        });
-    }
-}
-
-// Image gallery functionality for product pages
-function changeMainImage(imageSrc, thumbnailElement) {
-    const mainImage = document.getElementById('main-image');
-    if (mainImage) {
-        mainImage.src = imageSrc;
-        
-        // Update thumbnail borders
-        document.querySelectorAll('.thumbnail-btn').forEach(btn => {
-            btn.classList.remove('border-wendy-red');
-            btn.classList.add('border-transparent');
-        });
-        
-        thumbnailElement.classList.remove('border-transparent');
-        thumbnailElement.classList.add('border-wendy-red');
     }
 }
